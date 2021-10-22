@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>防抖、节流</title>
+</head>
+<body>
+  <input type="button" onclick="throttle(test1, 5000)" value="防抖" />
+  <input type="button" onclick="debounce(test1, 5000)" value="节流" />
+  <script>
+    function test1 () {
+      console.log(123)
+    };
+
+    function throttle (fn, interval) {
+      let flag = true;
+      return (...args) => {
+        const context = this;
+        if(!flag) return;
+        flag = false;
+        setTimeout(() => {
+          fn.apply(context, args);
+          flag = true;
+        }, interval);
+      }
+    };
+    // function throttle(cb, t) {
+    //   var timer;
+    //   var begin = new Date().getTime();
+    //   return function () {
+    //     clearTimeout(timer);
+    //     var cur = new Date().getTime();
+    //     if (cur - begin >= t) {
+    //       cb();
+    //     } else {
+    //       timer = setTimeout(function () {
+    //         cb();
+    //       }, t);
+    //     }
+    //   };
+    // }
+    function debounce (fn, delay) {
+      let timer = null;
+      return (...args) => {
+        const context = this;
+        if(timer) clearTimeout(timer);
+        timer = setTimeout(() => {
+          fn.apply(context, args);
+        }, delay);
+      }
+    };
+    window.onresize = throttle(test1, 5000);
+
+    setInterval(throttle(test1, 2000),10)
+
+
+  </script>
+</body>
+</html>
