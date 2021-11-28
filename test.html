@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      width: 100vw;
+      height: 100vh;
+      background-color: red;
+    }
+    @media screen and (max-width: 300px) {
+        body {
+            background-color:yellow;
+        }
+    }
+    @media screen and (max-width: 400px) {
+        body {
+            background-color:blue;
+        }
+    }
+    @media screen and (max-width: 786px) {
+        body {
+            background-color:green;
+        }
+    }
+    @media screen and (min-width: 786px) and (max-width: 1200px) {
+        body {
+            background-color:orange;
+        }
+    }
+  </style>
+</head>
+<body>
+  <div>测试</div>
+</body>
+</html>
