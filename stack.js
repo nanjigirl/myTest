@@ -7,7 +7,7 @@ class Stack {
     this.items[this.count] = element;
     this.count++;
   }
-  pop(element) {
+  pop() {
     if (this.isEmpty()) {
       return undefined;
     }
