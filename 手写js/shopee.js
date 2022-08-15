@@ -36,16 +36,9 @@ function findPath (obj, flag, result = []) {
   for (const key of Object.keys(obj)) {
     const newResult = [...result, key]
     if (typeof obj[key] === 'object') {
-      const target = findPath(obj[key], flag, newResult)
-      if (target) {
-        return target
-      }
-    } else {
-      if (flag === obj[key]) {
-        console.log('newResult', newResult)
-        return newResult
-      }
+      return findPath(obj[key], flag, newResult)
     }
+    return newResult
   }
 }
 
